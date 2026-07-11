@@ -1,0 +1,16 @@
+# Free cloud host — no PC / physical server required
+# https://render.com — free Web Service plan
+services:
+  - type: web
+    name: id-channel
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
